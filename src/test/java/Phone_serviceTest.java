@@ -33,7 +33,7 @@ public class Phone_serviceTest {
                     String NAME_OF_SERVICE = resultSet.getString("NAME_OF_SERVICE");
                     double PRICE = resultSet.getDouble("PRICE");
 
-                    System.out.println(id + "\t|" + id + "\t|" + NAME_OF_SERVICE + "\t|" + PRICE);
+                    System.out.println(id + "\t|" +  NAME_OF_SERVICE + "\t|" + PRICE);
                 }
                 resultSet.close();
                 statement.close();
