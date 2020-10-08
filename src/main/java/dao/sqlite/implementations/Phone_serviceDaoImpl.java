@@ -1,6 +1,6 @@
-package dao.SQLite.implementations;
+package dao.sqlite.implementations;
 
-import dao.SQLite.interfaces.Phone_serviceDAO;
+import dao.sqlite.interfaces.Phone_serviceDAO;
 import dao.connection.DB;
 import entity.Phone_service;
 
@@ -62,7 +62,7 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException {
 
     }
 

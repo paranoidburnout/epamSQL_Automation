@@ -1,4 +1,4 @@
-package dao.SQLite.interfaces;
+package dao.sqlite.interfaces;
 
 import entity.Phone_service;
 
@@ -13,7 +13,7 @@ public interface Phone_serviceDAO extends GenericDAO<Phone_service>{
     void update(Phone_service entity) throws SQLException;
 
     @Override
-    void delete(int id) throws SQLException;
+    void deleteById(int id) throws SQLException;
 
     @Override
     void delete(Phone_service entity) throws SQLException;

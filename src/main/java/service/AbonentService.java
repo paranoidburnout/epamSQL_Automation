@@ -1,7 +1,7 @@
 package service;
 
-import dao.SQLite.implementations.AbonentDaoImpl;
-import dao.SQLite.interfaces.AbonentDAO;
+import dao.sqlite.implementations.AbonentDaoImpl;
+import dao.sqlite.interfaces.AbonentDAO;
 import entity.Abonent;
 
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ public class AbonentService {
     }
 
     public void delete(int id) throws SQLException {
-        abonentDAO.delete(id);
+        abonentDAO.deleteById(id);
     }
     public void create(Abonent abonent) throws SQLException{
         abonentDAO.create(abonent);

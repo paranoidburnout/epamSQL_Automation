@@ -16,7 +16,7 @@ public class AbonentTest {
     void open() {
         try {
             Class.forName("org.sqlite.JDBC"); //Загрузка драйвера БД
-            c= DriverManager.getConnection("jdbc:sqlite:Telephone_station.db"); //Установление связи с БД
+            c= DriverManager.getConnection("jdbc:dao.sqlite:Telephone_station.db"); //Установление связи с БД
             System.out.println("Connected");
         }
         catch (Exception e){
@@ -80,7 +80,7 @@ public class AbonentTest {
 
     }
 
-//        try (PreparedStatement statement=dao.connection.prepareStatement("SELECT * FROM Abonent WHERE id = (?)")){
+//        try (PreparedStatement statement=dao.dao.dao.connection.prepareStatement("SELECT * FROM Abonent WHERE id = (?)")){
 //    statement.setInt(1,1);
 //    final ResultSet resultSet = statement.executeQuery();
 //    if (resultSet.next()){
@@ -90,5 +90,5 @@ public class AbonentTest {
 //        System.out.println("Phone: "+ Phone_number);
 //    }
 //        }finally {
-//            dao.connection.close();
+//            dao.dao.dao.connection.close();
 //        }

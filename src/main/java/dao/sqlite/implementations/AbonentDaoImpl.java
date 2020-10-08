@@ -1,6 +1,6 @@
-package dao.SQLite.implementations;
+package dao.sqlite.implementations;
 
-import dao.SQLite.interfaces.AbonentDAO;
+import dao.sqlite.interfaces.AbonentDAO;
 import dao.connection.DB;
 import entity.Abonent;
 
@@ -129,7 +129,7 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException {
 
     }
 
@@ -157,7 +157,7 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
 
 //public class AbonentDaoImpl implements AbonentDAO {
 //    List<Abonent> abonents;
-//    public AbonentDaoImpl(Connection dao.connection){
+//    public AbonentDaoImpl(Connection dao.dao.dao.connection){
 //        abonents = new ArrayList<Abonent>();
 //        Abonent abonent1 = new Abonent(0,"Patrakov", "Ivan", "+7 905 587 26 04");
 //        abonents.add(abonent1);

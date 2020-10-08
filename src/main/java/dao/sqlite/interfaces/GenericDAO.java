@@ -1,6 +1,4 @@
-package dao.SQLite.interfaces;
-
-//import model.AbstractEntity;
+package dao.sqlite.interfaces;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +11,7 @@ public interface GenericDAO<T> {
 
     void delete(T entity) throws SQLException;
 
-    void delete(int id) throws SQLException;
+    void deleteById(int id) throws SQLException;
 
     T findById(int id) throws SQLException;
 

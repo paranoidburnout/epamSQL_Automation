@@ -2,7 +2,7 @@
 
 public class DaoPatternAbonent {
 //    public static void main(String[] args) {
-//        AbonentDAO abonentDAO = new AbonentDaoImpl(DB.getConnection());
+//        AbonentDAO abonentDAO = new AbonentDaoImpl(dao.connection.DB.getConnection());
 //
 //        //print all abonents
 //        for (Abonent abonent : abonentDAO.getAllAbonents()) {

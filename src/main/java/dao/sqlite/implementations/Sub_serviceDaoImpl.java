@@ -1,7 +1,7 @@
-package dao.SQLite.implementations;
+package dao.sqlite.implementations;
 
-import dao.SQLite.interfaces.Sub_serviceDAO;
 import dao.connection.DB;
+import dao.sqlite.interfaces.Sub_serviceDAO;
 import entity.Sub_service;
 
 import java.sql.*;
@@ -121,7 +121,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException {
 
     }
 
