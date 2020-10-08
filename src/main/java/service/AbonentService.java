@@ -10,13 +10,14 @@ import java.util.List;
 public class AbonentService {
     private AbonentDAO abonentDAO;
 
-    public AbonentService(){
-        this.abonentDAO= new AbonentDaoImpl();
+    public AbonentService() {
+        this.abonentDAO = new AbonentDaoImpl();
     }
 
     public Abonent findById(int id) throws SQLException {
         return abonentDAO.findById(id);
     }
+
     public List<Abonent> findAll() throws SQLException {
         return abonentDAO.findAll();
     }
@@ -24,10 +25,12 @@ public class AbonentService {
     public void delete(int id) throws SQLException {
         abonentDAO.deleteById(id);
     }
-    public void create(Abonent abonent) throws SQLException{
+
+    public void create(Abonent abonent) throws SQLException {
         abonentDAO.create(abonent);
     }
-    public void update(Abonent abonent) throws SQLException{
+
+    public void update(Abonent abonent) throws SQLException {
         abonentDAO.update(abonent);
     }
 

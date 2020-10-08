@@ -4,14 +4,13 @@ import entity.Sub_service;
 import service.AbonentService;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Console {
 
@@ -26,10 +25,9 @@ public class Console {
     void open() {
         try {
             Class.forName("org.sqlite.JDBC"); //Загрузка драйвера БД
-            c= DriverManager.getConnection("jdbc:dao.sqlite:Telephone_station.db"); //Установление связи с БД
+            c = DriverManager.getConnection("jdbc:dao.sqlite:Telephone_station.db"); //Установление связи с БД
             System.out.println("Connected");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -41,10 +39,10 @@ public class Console {
             String request = reader.readLine();
             Console console = new Console();
             Object o = console.getResult(request.split(" "));
-            if (o instanceof Abonent){
+            if (o instanceof Abonent) {
                 System.out.println(((Abonent) o).getFirst_name() + " " + ((Abonent) o).getPhone_number());
             }
-            if (o instanceof List){
+            if (o instanceof List) {
                 List<Abonent> list = (List) o;
                 list.forEach(System.out::println);
             }
@@ -58,8 +56,7 @@ public class Console {
     void close() {
         try {
             c.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -86,7 +83,7 @@ public class Console {
                 close();
             }
         }
-        if (strings[0].equals("modify") && strings[1].equals("service") ) {
+        if (strings[0].equals("modify") && strings[1].equals("service")) {
             try {
                 return abonentService.findById(4);
 
