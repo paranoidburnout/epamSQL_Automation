@@ -42,7 +42,7 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     public List<Abonent> findAll() throws SQLException {
         List<Abonent> abonentList = new ArrayList<>();
 
-        String sql = "SELECT id, First_name, Second_name, Phone_number ";
+        String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent";
         Statement statement =null;
         try{
             statement=connection.createStatement();
@@ -82,7 +82,7 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            abonent.setId(resultSet.getInt("id"));
+            abonent.setId(resultSet.getInt(1));
             abonent.setFirst_name(resultSet.getString("First_name"));
             abonent.setSecond_name(resultSet.getString("Second_name"));
             abonent.setPhone_number(resultSet.getString("Phone_number"));
