@@ -41,15 +41,15 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     public List<Sub_service> findAll() throws SQLException {
         List<Sub_service> sub_services = new ArrayList<>();
 
-        String sql = "SELECT Abonent_id, Phone_service_id";
+        String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service";
         Statement statement = null;
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 Sub_service sub_service = new Sub_service();
-                sub_service.setAbonent_id(resultSet.getInt("Abonent_id"));
-                sub_service.setPhone_service_id(resultSet.getInt("Phone_service_id"));
+                sub_service.setAbonent_id(resultSet.getInt(1));
+                sub_service.setPhone_service_id(resultSet.getInt(2));
 
                 sub_services.add(sub_service);
             }
@@ -78,10 +78,10 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            sub_service.setAbonent_id(resultSet.getInt("Abonent_id"));
-            sub_service.setPhone_service_id(resultSet.getInt("Phone_service_id"));
+            sub_service.setAbonent_id(resultSet.getInt(1));
+            sub_service.setPhone_service_id(resultSet.getInt(2));
 
-            preparedStatement.executeUpdate();
+            preparedStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

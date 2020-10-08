@@ -3,8 +3,8 @@ package dao.connection;
 import java.sql.*;
 
 public class DB {
-    private static final String DB_DRIVER = "org.dao.sqlite.JDBC";
-    private static final String DB_URL = "jdbc:dao.sqlite:Telephone_station.db";
+    private static final String DB_DRIVER = "org.sqlite.JDBC";
+    private static final String DB_URL = "jdbc:sqlite:Telephone_station.db";
 
 
     public Connection getConnection() {

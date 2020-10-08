@@ -103,7 +103,7 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            phone_service.setId(resultSet.getInt("id"));
+            phone_service.setId(resultSet.getInt(1));
             phone_service.setNAME_OF_SERVICE(resultSet.getString("NAME_OF_SERVICE"));
             phone_service.setPRICE(resultSet.getDouble("PRICE"));
 
@@ -126,14 +126,14 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     public List<Phone_service> findAll() throws SQLException {
         List<Phone_service> phone_serviceList = new ArrayList<>();
 
-        String sql = "SELECT id, NAME_OF_SERVICE, PRICE ";
+        String sql = "SELECT id, NAME_OF_SERVICE, PRICE FROM Phone_service";
         Statement statement =null;
         try{
             statement=connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
                 Phone_service phone_service = new Phone_service();
-                phone_service.setId(resultSet.getInt("id"));
+                phone_service.setId(resultSet.getInt(1));
                 phone_service.setNAME_OF_SERVICE(resultSet.getString("NAME_OF_SERVICE"));
                 phone_service.setPRICE(resultSet.getDouble("PRICE"));
 

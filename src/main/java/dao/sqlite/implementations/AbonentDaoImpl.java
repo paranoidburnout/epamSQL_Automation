@@ -86,7 +86,7 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             abonent.setFirst_name(resultSet.getString("First_name"));
             abonent.setSecond_name(resultSet.getString("Second_name"));
             abonent.setPhone_number(resultSet.getString("Phone_number"));
-            preparedStatement.executeUpdate();
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();

@@ -13,7 +13,7 @@ public class Phone_serviceTest {
         void open() {
             try {
                 Class.forName("org.sqlite.JDBC"); //Загрузка драйвера БД
-                c = DriverManager.getConnection("jdbc:dao.sqlite:Telephone_station.db"); //Установление связи с БД
+                c = DriverManager.getConnection("jdbc:sqlite:Telephone_station.db"); //Установление связи с БД
                 System.out.println("Connected");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
