@@ -96,6 +96,65 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
+    public Sub_service findByAbonentId(int Abonent_id) throws SQLException {
+        PreparedStatement preparedStatement = null;
+
+        String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Abonent_id=?";
+        Sub_service sub_service = new Sub_service();
+
+        try {
+            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setInt(1, Abonent_id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            sub_service.setAbonent_id(resultSet.getInt(1));
+            sub_service.setPhone_service_id(resultSet.getInt(2));
+            preparedStatement.executeQuery();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return sub_service;
+    }
+
+    @Override
+    public Sub_service findByPhoneServiceId(int Phone_service_id) throws SQLException {
+        PreparedStatement preparedStatement = null;
+
+        String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Phone_service_id=?";
+        Sub_service sub_service = new Sub_service();
+
+        try {
+            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setInt(2, Phone_service_id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            sub_service.setPhone_service_id(resultSet.getInt(2));
+            sub_service.setAbonent_id(resultSet.getInt(1));
+
+            preparedStatement.executeQuery();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void update(Sub_service sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
 

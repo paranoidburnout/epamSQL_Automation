@@ -5,7 +5,7 @@ import entity.Phone_service;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface Phone_serviceDAO extends GenericDAO<Phone_service>{
+public interface Phone_serviceDAO extends GenericDAO<Phone_service> {
     @Override
     void create(Phone_service entity) throws SQLException;
 

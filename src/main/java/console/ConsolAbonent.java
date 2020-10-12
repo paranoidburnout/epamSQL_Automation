@@ -1,7 +1,8 @@
 package console;
 
+import dao.sqlite.implementations.AbonentDaoImpl;
+import dao.sqlite.interfaces.AbonentDAO;
 import entity.Abonent;
-import entity.Sub_service;
 import service.AbonentService;
 
 import java.io.BufferedReader;
@@ -30,7 +31,7 @@ public class ConsolAbonent {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String request = reader.readLine();
@@ -38,8 +39,10 @@ public class ConsolAbonent {
 
             Object o = console.getResult(request.split(" "));
 
+
             if (o instanceof Abonent) {
-                System.out.println(((Abonent) o).getFirst_name() + " " + ((Abonent) o).getPhone_number());
+                System.out.println(((Abonent) o).getFirst_name() + " " + ((Abonent) o).getPhone_number()+ " " +
+                        ((Abonent) o).getSecond_name());
             }
             if (o instanceof List) {
                 List<Abonent> list = (List) o;
@@ -60,14 +63,16 @@ public class ConsolAbonent {
         }
     }
 
-    Object getResult(String[] strings) {
+    Object getResult(String[] strings) throws IOException, SQLException {
         open();
         if (strings[0].equals("find") && strings[1].equals("user")) {
             try {
-                return abonentService.findById(4);
+                return abonentService.findById(4); //<---здесь необходимо прописать нужное  айди
 
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally {
+                close();
             }
         }
 
@@ -81,8 +86,8 @@ public class ConsolAbonent {
                 close();
             }
         }
-
-        return null;
+       return null;
     }
-
 }
+
+

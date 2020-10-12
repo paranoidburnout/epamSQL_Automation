@@ -39,6 +39,9 @@ public class ConsolSubService {
             if (s instanceof Sub_service) {
                 System.out.println(((Sub_service) s).getAbonent_id() + " " + ((Sub_service) s).getPhone_service_id());
             }
+            if (s instanceof Sub_service) {
+                System.out.println(((Sub_service) s).getPhone_service_id() + " " +((Sub_service) s).getAbonent_id());
+            }
             if (s instanceof List) {
                 List<Sub_service> list = (List) s;
                 list.forEach(System.out::println);
@@ -68,7 +71,7 @@ public class ConsolSubService {
                 close();
             }
         }
-        if (strings[0].equals("get") && strings[1].equals("all") && strings[2].equals("s")){
+        if (strings[0].equals("get") && strings[1].equals("defined") && strings[2].equals("subs")){
             try {
                 return sub_serviceService.findByAbonent_idAndPhone_service_id(1,4);
             } catch (SQLException e) {
@@ -77,6 +80,25 @@ public class ConsolSubService {
                 close();
             }
         }
+        if (strings[0].equals("find") && strings[1].equals("phone") && strings[2].equals("sub")){
+            try {
+                return sub_serviceService.findByPhoneServiceId(1);
+            }catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                close();
+            }
+        }
+        if (strings[0].equals("get") && strings[1].equals("abonent") && strings[2].equals("sub")){
+            try {
+                return sub_serviceService.findByAbonentId(2);
+            }catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                close();
+            }
+        }
+
         return null;
     }
 }

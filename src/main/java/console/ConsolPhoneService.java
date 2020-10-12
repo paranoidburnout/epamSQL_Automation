@@ -57,6 +57,15 @@ public class ConsolPhoneService {
 
     Object getResult(String[] strings) {
         open();
+        if (strings[0].equals("find") && strings[1].equals("service")){
+            try {
+                return phone_serviceService.findById(2);
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                close();
+            }
+        }
 
         if (strings[0].equals("get") && strings[1].equals("all") && strings[2].equals("services")) {
             try {

@@ -107,7 +107,7 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
             phone_service.setNAME_OF_SERVICE(resultSet.getString("NAME_OF_SERVICE"));
             phone_service.setPRICE(resultSet.getDouble("PRICE"));
 
-            preparedStatement.executeUpdate();
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();

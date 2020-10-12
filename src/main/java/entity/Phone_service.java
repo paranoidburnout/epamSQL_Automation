@@ -1,17 +1,11 @@
 package entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Phone_service {
     private int id;
     private String NAME_OF_SERVICE;
     private double PRICE;
-
-//    private ArrayList<Abonent> abonents = new ArrayList<Abonent>();
-
-//    private static Logger log= Logger.getLogger(Abonent.class.getName());
 
     public Phone_service(int id, String NAME_OF_SERVICE, double PRICE){
         this.id=id;
@@ -47,14 +41,6 @@ public class Phone_service {
         this.PRICE = PRICE;
     }
 
-//    public ArrayList<Abonent> getAbonents() {
-//        return abonents;
-//    }
-//
-//    public void setAbonents(ArrayList<Abonent> abonents) {
-//        this.abonents = abonents;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,13 +49,11 @@ public class Phone_service {
         return id == that.id &&
                 Double.compare(that.PRICE, PRICE) == 0 &&
                 NAME_OF_SERVICE.equals(that.NAME_OF_SERVICE) ;
-//                && abonents.equals(that.abonents);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, NAME_OF_SERVICE, PRICE
-//                , abonents
         );
     }
 
@@ -80,7 +64,6 @@ public class Phone_service {
                 ", NAME_OF_SERVICE='" + NAME_OF_SERVICE + '\'' +
                 ", PRICE=" + PRICE +
                 ", abonents=" +
-//                abonents +
                 '}';
     }
 }
