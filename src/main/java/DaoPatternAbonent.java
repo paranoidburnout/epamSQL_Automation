@@ -15,7 +15,7 @@ public class DaoPatternAbonent {
 //        abonent.setFirst_name("Blaumman");
 //        abonent.setSecond_name("Dirk");
 //        abonent.setPhone_number("+4915903906944");
-//        abonentDAO.updateAbonent(abonent);
+//        abonentDAO.update(abonent);
 //        //get the abonent
 //        abonentDAO.getAbonent(0);
 //        System.out.println("Abonent: [ID : " + abonent.getId() + ", First_Name : " +
@@ -43,9 +43,9 @@ public class DaoPatternAbonent {
 //        sub_service.setPhone_service_id(phone_service.getId());
 //
 //        try {
-//            abonentService.add(abonent);
-//            phone_serviceService.add(phone_service);
-//            sub_serviceService.add(sub_service);
+//            abonentService.create(abonent);
+//            phone_serviceService.create(phone_service);
+//            sub_serviceService.create(sub_service);
 //        }catch (SQLException e){
 //            e.printStackTrace();
 //        }

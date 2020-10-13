@@ -22,10 +22,6 @@ public class AbonentService {
         return abonentDAO.findAll();
     }
 
-    public void delete(int id) throws SQLException {
-        abonentDAO.deleteById(id);
-    }
-
     public void create(Abonent abonent) throws SQLException {
         abonentDAO.create(abonent);
     }
@@ -34,4 +30,7 @@ public class AbonentService {
         abonentDAO.update(abonent);
     }
 
+    public void delete(int id) throws SQLException {
+        abonentDAO.deleteById(id);
+    }
 }

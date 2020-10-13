@@ -1,7 +1,5 @@
 package console;
 
-import dao.sqlite.implementations.AbonentDaoImpl;
-import dao.sqlite.interfaces.AbonentDAO;
 import entity.Abonent;
 import service.AbonentService;
 
@@ -17,7 +15,6 @@ import java.util.List;
 public class ConsolAbonent {
 
     AbonentService abonentService = new AbonentService();
-
     Connection c;
 
     void open() {
@@ -30,29 +27,24 @@ public class ConsolAbonent {
         }
     }
 
-
     public static void main(String[] args) throws SQLException {
-
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String request = reader.readLine();
             ConsolAbonent console = new ConsolAbonent();
 
             Object o = console.getResult(request.split(" "));
 
-
             if (o instanceof Abonent) {
-                System.out.println(((Abonent) o).getFirst_name() + " " + ((Abonent) o).getPhone_number()+ " " +
+                System.out.println(((Abonent) o).getFirst_name() + " " + ((Abonent) o).getPhone_number() + " " +
                         ((Abonent) o).getSecond_name());
             }
             if (o instanceof List) {
                 List<Abonent> list = (List) o;
                 list.forEach(System.out::println);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     void close() {
@@ -68,25 +60,22 @@ public class ConsolAbonent {
         if (strings[0].equals("find") && strings[1].equals("user")) {
             try {
                 return abonentService.findById(4); //<---здесь необходимо прописать нужное  айди
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }finally {
-                close();
-            }
-        }
-
-        if (strings[0].equals("get") && strings[1].equals("all") && strings[2].equals("users")) {
-            try {
-                return abonentService.findAll();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 close();
             }
         }
-       return null;
+        if (strings[0].equals("get") && strings[1].equals("all") && strings[2].equals("users")) {
+            try {
+                return abonentService.findAll();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                close();
+            }
+        }
+        return null;
     }
 }
 

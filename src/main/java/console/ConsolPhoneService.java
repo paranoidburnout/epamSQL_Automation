@@ -14,7 +14,6 @@ import java.util.List;
 public class ConsolPhoneService {
 
     Phone_serviceService phone_serviceService = new Phone_serviceService();
-
     Connection connection;
 
     void open() {
@@ -57,12 +56,12 @@ public class ConsolPhoneService {
 
     Object getResult(String[] strings) {
         open();
-        if (strings[0].equals("find") && strings[1].equals("service")){
+        if (strings[0].equals("find") && strings[1].equals("service")) {
             try {
                 return phone_serviceService.findById(2);
-            }catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 close();
             }
         }

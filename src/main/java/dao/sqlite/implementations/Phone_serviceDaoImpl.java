@@ -10,12 +10,14 @@ import java.util.List;
 
 public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     Connection connection = getConnection();
+
     @Override
     public void create(Phone_service phone_service) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO Phone_service (NAME_OF_SERVICE, PRICE)" +
                 "VALUES (?,?);";
-        try{
+
+        try {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(2, phone_service.getNAME_OF_SERVICE());
@@ -23,13 +25,13 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
 
             preparedStatement.executeUpdate();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement != null){
+        } finally {
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -38,7 +40,6 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     @Override
     public void update(Phone_service phone_service) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "UPDATE Phone_service SET NAME_OF_SERVICE=?, PRICE=? WHERE id=?";
 
         try {
@@ -49,13 +50,13 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
             preparedStatement.setInt(1, phone_service.getId());
 
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
+        } finally {
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -69,21 +70,21 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     @Override
     public void delete(Phone_service phone_service) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "DELETE FROM Phone_service WHERE id=?";
+
         try {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, phone_service.getId());
 
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
+        } finally {
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -93,13 +94,12 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     @Override
     public Phone_service findById(int id) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "SELECT id, NAME_OF_SERVICE, PRICE FROM Phone_service WHERE id=?";
-
         Phone_service phone_service = new Phone_service();
+
         try {
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -109,13 +109,13 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
 
             preparedStatement.executeQuery();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
+        } finally {
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -125,13 +125,13 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
     @Override
     public List<Phone_service> findAll() throws SQLException {
         List<Phone_service> phone_serviceList = new ArrayList<>();
-
         String sql = "SELECT id, NAME_OF_SERVICE, PRICE FROM Phone_service";
-        Statement statement =null;
-        try{
-            statement=connection.createStatement();
+        Statement statement = null;
+
+        try {
+            statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Phone_service phone_service = new Phone_service();
                 phone_service.setId(resultSet.getInt(1));
                 phone_service.setNAME_OF_SERVICE(resultSet.getString("NAME_OF_SERVICE"));
@@ -139,13 +139,13 @@ public class Phone_serviceDaoImpl extends DB implements Phone_serviceDAO {
 
                 phone_serviceList.add(phone_service);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (statement !=null){
+        } finally {
+            if (statement != null) {
                 statement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }

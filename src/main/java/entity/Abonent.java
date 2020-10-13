@@ -8,11 +8,11 @@ public class Abonent {
     private String Second_name;
     private String Phone_number;
 
-    public Abonent(int id, String First_name, String Second_name, String Phone_number){
-        this.id= id;
-        this.First_name= First_name;
+    public Abonent(int id, String First_name, String Second_name, String Phone_number) {
+        this.id = id;
+        this.First_name = First_name;
         this.Second_name = Second_name;
-        this.Phone_number= Phone_number;
+        this.Phone_number = Phone_number;
     }
 
     public Abonent() {

@@ -5,34 +5,35 @@ import dao.connection.DB;
 import entity.Abonent;
 
 import java.sql.*;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AbonentDaoImpl extends DB implements AbonentDAO {
-
     Connection connection = getConnection();
 
     @Override
     public void create(Abonent abonent) throws SQLException {
-        PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO Abonent (Second_name, First_name, Phone_number)" +
-                "VALUES ( ?, ?, ?)";
-        try{
-            preparedStatement = connection.prepareStatement(sql);
+        try {
+            String First_name = "Kipchatov";
+            String Second_name = "Michael";
+            String Phone_number = "+79633136313";
 
-            preparedStatement.setString(2, abonent.getSecond_name());
-            preparedStatement.setString(3, abonent.getFirst_name());
-            preparedStatement.setString(4, abonent.getPhone_number());
+            String query =
+                    "INSERT INTO Abonent (Second_name, First_name, Phone_number)" +
+                            "VALUES ('" + First_name + "' , '" + Second_name + "' , '" + Phone_number + "') ";
+            Statement statement = connection.createStatement(); //простой sql запрос
+            statement.executeUpdate(query);
 
-            preparedStatement.executeUpdate();
-
-        }catch (SQLException e){
+            System.out.println("Rows added");
+            statement.close();
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement != null){
-                preparedStatement.close();
-            }
-            if (connection != null){
+//        } finally {
+//            if (preparedStatement != null) {
+//                preparedStatement.close();
+//            }
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -41,13 +42,13 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     @Override
     public List<Abonent> findAll() throws SQLException {
         List<Abonent> abonentList = new ArrayList<>();
-
         String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent";
-        Statement statement =null;
-        try{
-            statement=connection.createStatement();
+        Statement statement = null;
+
+        try {
+            statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Abonent abonent = new Abonent();
                 abonent.setId(resultSet.getInt("id"));
                 abonent.setFirst_name(resultSet.getString("First_name"));
@@ -56,13 +57,13 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
 
                 abonentList.add(abonent);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (statement !=null){
+        } finally {
+            if (statement != null) {
                 statement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -72,13 +73,12 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     @Override
     public Abonent findById(int id) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent WHERE id=?";
-
         Abonent abonent = new Abonent();
+
         try {
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -88,13 +88,13 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             abonent.setPhone_number(resultSet.getString("Phone_number"));
             preparedStatement.executeQuery();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
+        } finally {
+            if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -103,26 +103,23 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
 
     @Override
     public void update(Abonent abonent) throws SQLException {
-        PreparedStatement preparedStatement = null;
-
-        String sql = "UPDATE Abonent SET First_name=?, Second_name=?, Phone_number=? WHERE id=?";
-
         try {
-            preparedStatement = connection.prepareStatement(sql);
+            String First_name = "Blaumman";
+            String Second_name = "Dirk";
+            String Phone_number = "+4915903906944";
+            int id = 6;
 
-            preparedStatement.setString(2, abonent.getFirst_name());
-            preparedStatement.setString(3, abonent.getSecond_name());
-            preparedStatement.setString(4, abonent.getPhone_number());
-            preparedStatement.setInt(1, abonent.getId());
+            String query =
+                    "UPDATE Abonent SET  First_name=('" + First_name + "'),Second_name=('" + Second_name + "'), Phone_number=('" + Phone_number + "') WHERE id=('" + id + "')";
 
-            preparedStatement.executeUpdate();
-        }catch (SQLException e){
+            Statement statement = connection.createStatement(); //простой sql запрос
+            statement.executeUpdate(query);
+
+            System.out.println("Rows updated");
+            statement.close();
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
-                preparedStatement.close();
-            }
-            if (connection !=null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -130,30 +127,37 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
 
     @Override
     public void deleteById(int id) throws SQLException {
-
     }
 
     @Override
     public void delete(Abonent abonent) throws SQLException {
         PreparedStatement preparedStatement = null;
-
-        String sql = "DELETE FROM Abonent WHERE id=?";
         try {
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, abonent.getId());
-            preparedStatement.executeUpdate();
-        }catch (SQLException e){
+            int id = 9;
+            String query = "DELETE FROM Abonent WHERE id=('"+id+"')";
+
+            Statement statement = connection.createStatement(); //простой sql запрос
+            statement.executeUpdate(query);
+
+            System.out.println("Rows deleted");
+            statement.close();
+
+//            preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setInt(1, abonent.getId());
+//            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (preparedStatement !=null){
-                preparedStatement.close();
-            }
-            if (connection !=null){
+//        } finally {
+//            if (preparedStatement != null) {
+//                preparedStatement.close();
+//            }
+            if (connection != null) {
                 connection.close();
             }
         }
     }
 }
+
 
 //public class AbonentDaoImpl implements AbonentDAO {
 //    List<Abonent> abonents;

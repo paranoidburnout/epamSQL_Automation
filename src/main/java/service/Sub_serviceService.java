@@ -2,7 +2,6 @@ package service;
 
 import dao.sqlite.implementations.Sub_serviceDaoImpl;
 import dao.sqlite.interfaces.Sub_serviceDAO;
-import entity.Abonent;
 import entity.Sub_service;
 
 import java.sql.SQLException;
@@ -34,11 +33,12 @@ public class Sub_serviceService {
     public void update(Sub_service sub_service) throws SQLException {
         sub_serviceDAO.update(sub_service);
     }
+
     public Sub_service findByAbonentId(int Abonent_id) throws SQLException {
         return sub_serviceDAO.findByAbonentId(Abonent_id);
     }
+
     public Sub_service findByPhoneServiceId(int Phone_service_id) throws SQLException {
         return sub_serviceDAO.findByPhoneServiceId(Phone_service_id);
     }
-
 }

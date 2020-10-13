@@ -6,9 +6,9 @@ public class Sub_service {
     private int Abonent_id;
     private int Phone_service_id;
 
-    public Sub_service(int Abonent_id, int Phone_service_id){
-        this.Abonent_id=Abonent_id;
-        this.Phone_service_id=Phone_service_id;
+    public Sub_service(int Abonent_id, int Phone_service_id) {
+        this.Abonent_id = Abonent_id;
+        this.Phone_service_id = Phone_service_id;
     }
 
     public Sub_service() {

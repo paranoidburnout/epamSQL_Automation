@@ -16,15 +16,14 @@ public class AbonentTest {
     void open() {
         try {
             Class.forName("org.sqlite.JDBC"); //Загрузка драйвера БД
-            c= DriverManager.getConnection("jdbc:sqlite:Telephone_station.db"); //Установление связи с БД
+            c = DriverManager.getConnection("jdbc:sqlite:Telephone_station.db"); //Установление связи с БД
             System.out.println("Connected");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-//    void insert() {
+    //    void insert() {
 //        try {
 //            Scanner scanner = new Scanner(System.in);
 //            System.out.println("Enter Abonent First_name: ");
@@ -47,14 +46,14 @@ public class AbonentTest {
 //        }
 //    }
     public void select() {
-        try{
+        try {
             Statement statement = c.createStatement();
             String query =
                     "SELECT id, First_name, Second_name, Phone_number " +
                             " FROM Abonent " +
                             "ORDER BY First_name";
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String First_name = resultSet.getString("First_name");
                 String Second_name = resultSet.getString("Second_name");
@@ -63,8 +62,7 @@ public class AbonentTest {
             }
             resultSet.close();
             statement.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -72,13 +70,12 @@ public class AbonentTest {
     void close() {
         try {
             c.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    }
+}
 
 //        try (PreparedStatement statement=dao.dao.dao.connection.prepareStatement("SELECT * FROM Abonent WHERE id = (?)")){
 //    statement.setInt(1,1);

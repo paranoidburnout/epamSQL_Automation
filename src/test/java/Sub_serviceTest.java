@@ -2,11 +2,11 @@ import java.sql.*;
 
 public class Sub_serviceTest {
     public static void main(String[] args) throws SQLException {
-    Sub_serviceTest sub_service = new Sub_serviceTest();
-            sub_service.open();
-            sub_service.select();
-            sub_service.close();
-}
+        Sub_serviceTest sub_service = new Sub_serviceTest();
+        sub_service.open();
+        sub_service.select();
+        sub_service.close();
+    }
 
     Connection c;
 
@@ -29,7 +29,7 @@ public class Sub_serviceTest {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int Abonent_id = resultSet.getInt(1);
-                int Phone_service_id= resultSet.getInt(2);
+                int Phone_service_id = resultSet.getInt(2);
 
 
                 System.out.println(Abonent_id + "\t|" + Phone_service_id);

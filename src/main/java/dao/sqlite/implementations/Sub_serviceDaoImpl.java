@@ -16,6 +16,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO Sub_service (Abonent_id, Phone_service_id)" +
                 "VALUES ( ?, ?)";
+
         try {
             preparedStatement = connection.prepareStatement(sql);
 
@@ -40,9 +41,9 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     @Override
     public List<Sub_service> findAll() throws SQLException {
         List<Sub_service> sub_services = new ArrayList<>();
-
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service";
         Statement statement = null;
+
         try {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -71,6 +72,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
         PreparedStatement preparedStatement = null;
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Abonent_id=? AND Phone_service_id=?";
         Sub_service sub_service = new Sub_service();
+
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, Abonent_id);
@@ -98,12 +100,11 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     @Override
     public Sub_service findByAbonentId(int Abonent_id) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Abonent_id=?";
         Sub_service sub_service = new Sub_service();
 
         try {
-            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, Abonent_id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -111,7 +112,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
             sub_service.setAbonent_id(resultSet.getInt(1));
             sub_service.setPhone_service_id(resultSet.getInt(2));
             preparedStatement.executeQuery();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -127,12 +128,11 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     @Override
     public Sub_service findByPhoneServiceId(int Phone_service_id) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Phone_service_id=?";
         Sub_service sub_service = new Sub_service();
 
         try {
-            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(2, Phone_service_id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -141,7 +141,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
             sub_service.setAbonent_id(resultSet.getInt(1));
 
             preparedStatement.executeQuery();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
@@ -157,7 +157,6 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     @Override
     public void update(Sub_service sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "UPDATE Sub_service SET Abonent_id=?, Phone_service_id=?";
 
         try {
@@ -184,12 +183,11 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
 
     }
 
-
     @Override
     public void delete(Sub_service sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
-
         String sql = "DELETE FROM Sub_service WHERE Abonent_id=? AND Phone_service_id=?";
+
         try {
             preparedStatement = connection.prepareStatement(sql);
 

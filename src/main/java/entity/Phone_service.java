@@ -7,8 +7,8 @@ public class Phone_service {
     private String NAME_OF_SERVICE;
     private double PRICE;
 
-    public Phone_service(int id, String NAME_OF_SERVICE, double PRICE){
-        this.id=id;
+    public Phone_service(int id, String NAME_OF_SERVICE, double PRICE) {
+        this.id = id;
         this.NAME_OF_SERVICE = NAME_OF_SERVICE;
         this.PRICE = PRICE;
     }
@@ -48,7 +48,7 @@ public class Phone_service {
         Phone_service that = (Phone_service) o;
         return id == that.id &&
                 Double.compare(that.PRICE, PRICE) == 0 &&
-                NAME_OF_SERVICE.equals(that.NAME_OF_SERVICE) ;
+                NAME_OF_SERVICE.equals(that.NAME_OF_SERVICE);
     }
 
     @Override

@@ -14,7 +14,6 @@ import java.util.List;
 public class ConsolSubService {
 
     Sub_serviceService sub_serviceService = new Sub_serviceService();
-
     Connection connection;
 
     void open() {
@@ -40,7 +39,7 @@ public class ConsolSubService {
                 System.out.println(((Sub_service) s).getAbonent_id() + " " + ((Sub_service) s).getPhone_service_id());
             }
             if (s instanceof Sub_service) {
-                System.out.println(((Sub_service) s).getPhone_service_id() + " " +((Sub_service) s).getAbonent_id());
+                System.out.println(((Sub_service) s).getPhone_service_id() + " " + ((Sub_service) s).getAbonent_id());
             }
             if (s instanceof List) {
                 List<Sub_service> list = (List) s;
@@ -71,28 +70,28 @@ public class ConsolSubService {
                 close();
             }
         }
-        if (strings[0].equals("get") && strings[1].equals("defined") && strings[2].equals("subs")){
+        if (strings[0].equals("get") && strings[1].equals("defined") && strings[2].equals("subs")) {
             try {
-                return sub_serviceService.findByAbonent_idAndPhone_service_id(1,4);
+                return sub_serviceService.findByAbonent_idAndPhone_service_id(1, 4);
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 close();
             }
         }
-        if (strings[0].equals("find") && strings[1].equals("phone") && strings[2].equals("sub")){
+        if (strings[0].equals("find") && strings[1].equals("phone") && strings[2].equals("sub")) {
             try {
                 return sub_serviceService.findByPhoneServiceId(1);
-            }catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 close();
             }
         }
-        if (strings[0].equals("get") && strings[1].equals("abonent") && strings[2].equals("sub")){
+        if (strings[0].equals("get") && strings[1].equals("abonent") && strings[2].equals("sub")) {
             try {
                 return sub_serviceService.findByAbonentId(2);
-            }catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 close();
