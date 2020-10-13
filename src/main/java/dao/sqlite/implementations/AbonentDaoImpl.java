@@ -142,51 +142,11 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             System.out.println("Rows deleted");
             statement.close();
 
-//            preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setInt(1, abonent.getId());
-//            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-//        } finally {
-//            if (preparedStatement != null) {
-//                preparedStatement.close();
-//            }
             if (connection != null) {
                 connection.close();
             }
         }
     }
 }
-
-
-//public class AbonentDaoImpl implements AbonentDAO {
-//    List<Abonent> abonents;
-//    public AbonentDaoImpl(Connection dao.dao.dao.connection){
-//        abonents = new ArrayList<Abonent>();
-//        Abonent abonent1 = new Abonent(0,"Patrakov", "Ivan", "+7 905 587 26 04");
-//        abonents.add(abonent1);
-//    }
-//    @Override
-//    public void deleteAbonent(Abonent abonent) {
-//        abonents.remove(abonent.getId());
-//        System.out.println("Abonent: ID " + abonent.getId() + ", deleted from database");
-//    }
-//    @Override
-//    public List<Abonent> getAllAbonents() {
-//        return abonents;
-//    }
-//
-//    @Override
-//    public Abonent getAbonent(int id) {
-//        return abonents.get(id);
-//    }
-//
-//    @Override
-//    public void updateAbonent(Abonent abonent) {
-//        abonents.get(abonent.getId()).setPhone_number(abonent.getPhone_number());
-//        System.out.println("Abonent: ID " + abonent.getId() + ", updated in the database");
-//
-//    }
-
-
-//}

@@ -6,7 +6,6 @@ public class AbonentTest {
     public static void main(String[] args) throws SQLException {
         AbonentTest abonent = new AbonentTest();
         abonent.open();
-//        abonent.insert();
         abonent.select();
         abonent.close();
     }
@@ -23,28 +22,6 @@ public class AbonentTest {
         }
     }
 
-    //    void insert() {
-//        try {
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("Enter Abonent First_name: ");
-//            String First_name = scanner.nextLine();
-//            System.out.println("Enter Abonent Second_name: ");
-//            String Second_name = scanner.nextLine();
-//            System.out.println("Enter Abonent Phone_number: ");
-//            String Phone_number = scanner.nextLine();
-//
-//            String query =
-//                    "INSERT INTO Abonent (Second_name, First_name, Phone_number)" +
-//                            "VALUES ('" + First_name + "' , '" + Second_name + "' , '" + Phone_number + "') ";
-//            Statement statement = c.createStatement(); //простой sql запрос
-//            statement.executeUpdate(query);
-//
-//            System.out.println("Rows added");
-//            statement.close();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
     public void select() {
         try {
             Statement statement = c.createStatement();
@@ -76,16 +53,3 @@ public class AbonentTest {
     }
 
 }
-
-//        try (PreparedStatement statement=dao.dao.dao.connection.prepareStatement("SELECT * FROM Abonent WHERE id = (?)")){
-//    statement.setInt(1,1);
-//    final ResultSet resultSet = statement.executeQuery();
-//    if (resultSet.next()){
-//        String byIndex = "Second_name: " + resultSet.getString(1);
-//        final int Phone_number = resultSet.getInt("Phone");
-//        System.out.println(byIndex);
-//        System.out.println("Phone: "+ Phone_number);
-//    }
-//        }finally {
-//            dao.dao.dao.connection.close();
-//        }
