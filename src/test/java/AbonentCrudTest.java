@@ -1,17 +1,11 @@
 import dao.sqlite.implementations.AbonentDaoImpl;
 import dao.sqlite.interfaces.AbonentDAO;
 import entity.Abonent;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import service.AbonentService;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class AbonentCrudTest extends AbonentService {
     AbonentDAO abonentDAO = new AbonentDaoImpl();

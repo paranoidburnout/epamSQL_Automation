@@ -5,7 +5,6 @@ import dao.connection.DB;
 import entity.Abonent;
 
 import java.sql.*;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +28,6 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-//        } finally {
-//            if (preparedStatement != null) {
-//                preparedStatement.close();
-//            }
             if (connection != null) {
                 connection.close();
             }
