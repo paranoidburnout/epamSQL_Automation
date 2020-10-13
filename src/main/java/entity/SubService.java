@@ -2,16 +2,16 @@ package entity;
 
 import java.util.Objects;
 
-public class Sub_service {
+public class SubService {
     private int Abonent_id;
     private int Phone_service_id;
 
-    public Sub_service(int Abonent_id, int Phone_service_id) {
+    public SubService(int Abonent_id, int Phone_service_id) {
         this.Abonent_id = Abonent_id;
         this.Phone_service_id = Phone_service_id;
     }
 
-    public Sub_service() {
+    public SubService() {
 
     }
 
@@ -35,7 +35,7 @@ public class Sub_service {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Sub_service that = (Sub_service) o;
+        SubService that = (SubService) o;
         return Abonent_id == that.Abonent_id &&
                 Phone_service_id == that.Phone_service_id;
     }

@@ -1,7 +1,7 @@
 package console;
 
-import entity.Phone_service;
-import service.Phone_serviceService;
+import entity.PhoneService;
+import service.PhoneServiceService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ConsolPhoneService {
 
-    Phone_serviceService phone_serviceService = new Phone_serviceService();
+    PhoneServiceService phone_serviceService = new PhoneServiceService();
     Connection connection;
 
     void open() {
@@ -34,11 +34,11 @@ public class ConsolPhoneService {
             ConsolPhoneService consolPhoneService = new ConsolPhoneService();
 
             Object p = consolPhoneService.getResult(request.split(" "));
-            if (p instanceof Phone_service) {
-                System.out.println(((Phone_service) p).getNAME_OF_SERVICE() + " " + ((Phone_service) p).getPRICE());
+            if (p instanceof PhoneService) {
+                System.out.println(((PhoneService) p).getNAME_OF_SERVICE() + " " + ((PhoneService) p).getPRICE());
             }
             if (p instanceof List) {
-                List<Phone_service> list = (List) p;
+                List<PhoneService> list = (List) p;
                 list.forEach(System.out::println);
             }
         } catch (IOException e) {

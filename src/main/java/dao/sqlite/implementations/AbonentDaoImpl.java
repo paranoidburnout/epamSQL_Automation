@@ -15,13 +15,13 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     @Override
     public void create(Abonent abonent) throws SQLException {
         try {
-            String First_name = "Kipchatov";
-            String Second_name = "Michael";
-            String Phone_number = "+79633136313";
+            String first_name = "Kipchatov";
+            String second_name = "Michael";
+            String phone_number = "+79633136313";
 
             String query =
                     "INSERT INTO Abonent (Second_name, First_name, Phone_number)" +
-                            "VALUES ('" + First_name + "' , '" + Second_name + "' , '" + Phone_number + "') ";
+                            "VALUES ('" + first_name + "' , '" + second_name + "' , '" + phone_number + "') ";
             Statement statement = connection.createStatement(); //простой sql запрос
             statement.executeUpdate(query);
 
@@ -104,13 +104,13 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     @Override
     public void update(Abonent abonent) throws SQLException {
         try {
-            String First_name = "Blaumman";
-            String Second_name = "Dirk";
-            String Phone_number = "+4915903906944";
+            String first_name = "Blaumman";
+            String second_name = "Dirk";
+            String phone_number = "+4915903906944";
             int id = 6;
 
             String query =
-                    "UPDATE Abonent SET  First_name=('" + First_name + "'),Second_name=('" + Second_name + "'), Phone_number=('" + Phone_number + "') WHERE id=('" + id + "')";
+                    "UPDATE Abonent SET  First_name=('" + first_name + "'),Second_name=('" + second_name + "'), Phone_number=('" + phone_number + "') WHERE id=('" + id + "')";
 
             Statement statement = connection.createStatement(); //простой sql запрос
             statement.executeUpdate(query);

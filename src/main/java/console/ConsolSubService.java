@@ -1,7 +1,7 @@
 package console;
 
-import entity.Sub_service;
-import service.Sub_serviceService;
+import entity.SubService;
+import service.SubServiceService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ConsolSubService {
 
-    Sub_serviceService sub_serviceService = new Sub_serviceService();
+    SubServiceService sub_serviceService = new SubServiceService();
     Connection connection;
 
     void open() {
@@ -35,14 +35,14 @@ public class ConsolSubService {
 
             Object s = consolSubService.getResult(request.split(" "));
 
-            if (s instanceof Sub_service) {
-                System.out.println(((Sub_service) s).getAbonent_id() + " " + ((Sub_service) s).getPhone_service_id());
+            if (s instanceof SubService) {
+                System.out.println(((SubService) s).getAbonent_id() + " " + ((SubService) s).getPhone_service_id());
             }
-            if (s instanceof Sub_service) {
-                System.out.println(((Sub_service) s).getPhone_service_id() + " " + ((Sub_service) s).getAbonent_id());
+            if (s instanceof SubService) {
+                System.out.println(((SubService) s).getPhone_service_id() + " " + ((SubService) s).getAbonent_id());
             }
             if (s instanceof List) {
-                List<Sub_service> list = (List) s;
+                List<SubService> list = (List) s;
                 list.forEach(System.out::println);
             }
         } catch (IOException e) {

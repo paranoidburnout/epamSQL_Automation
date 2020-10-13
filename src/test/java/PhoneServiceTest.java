@@ -1,11 +1,11 @@
 import java.sql.*;
 
-public class Sub_serviceTest {
+public class PhoneServiceTest {
     public static void main(String[] args) throws SQLException {
-        Sub_serviceTest sub_service = new Sub_serviceTest();
-        sub_service.open();
-        sub_service.select();
-        sub_service.close();
+        PhoneServiceTest phone_service = new PhoneServiceTest();
+        phone_service.open();
+        phone_service.select();
+        phone_service.close();
     }
 
     Connection c;
@@ -24,15 +24,16 @@ public class Sub_serviceTest {
         try {
             Statement statement = c.createStatement();
             String query =
-                    "SELECT Abonent_id, Phone_service_id " +
-                            " FROM Sub_service ";
+                    "SELECT id, NAME_OF_SERVICE, PRICE " +
+                            " FROM Phone_service " +
+                            "ORDER BY PRICE";
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                int Abonent_id = resultSet.getInt(1);
-                int Phone_service_id = resultSet.getInt(2);
+                int id = resultSet.getInt("id");
+                String NAME_OF_SERVICE = resultSet.getString("NAME_OF_SERVICE");
+                double PRICE = resultSet.getDouble("PRICE");
 
-
-                System.out.println(Abonent_id + "\t|" + Phone_service_id);
+                System.out.println(id + "\t|" + NAME_OF_SERVICE + "\t|" + PRICE);
             }
             resultSet.close();
             statement.close();
@@ -48,4 +49,6 @@ public class Sub_serviceTest {
             System.out.println(e.getMessage());
         }
     }
+
 }
+

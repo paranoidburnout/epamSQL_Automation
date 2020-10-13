@@ -1,18 +1,18 @@
 package dao.sqlite.implementations;
 
 import dao.connection.DB;
-import dao.sqlite.interfaces.Sub_serviceDAO;
-import entity.Sub_service;
+import dao.sqlite.interfaces.SubServiceDAO;
+import entity.SubService;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
+public class SubServiceDaoImpl extends DB implements SubServiceDAO {
     Connection connection = getConnection();
 
     @Override
-    public void create(Sub_service sub_service) throws SQLException {
+    public void create(SubService sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO Sub_service (Abonent_id, Phone_service_id)" +
                 "VALUES ( ?, ?)";
@@ -39,8 +39,8 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public List<Sub_service> findAll() throws SQLException {
-        List<Sub_service> sub_services = new ArrayList<>();
+    public List<SubService> findAll() throws SQLException {
+        List<SubService> sub_services = new ArrayList<>();
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service";
         Statement statement = null;
 
@@ -48,7 +48,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Sub_service sub_service = new Sub_service();
+                SubService sub_service = new SubService();
                 sub_service.setAbonent_id(resultSet.getInt(1));
                 sub_service.setPhone_service_id(resultSet.getInt(2));
 
@@ -68,10 +68,10 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public Sub_service findByAbonent_idAndPhone_service_id(int Abonent_id, int Phone_service_id) throws SQLException {
+    public SubService findByAbonent_idAndPhone_service_id(int Abonent_id, int Phone_service_id) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Abonent_id=? AND Phone_service_id=?";
-        Sub_service sub_service = new Sub_service();
+        SubService sub_service = new SubService();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -98,10 +98,10 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public Sub_service findByAbonentId(int Abonent_id) throws SQLException {
+    public SubService findByAbonentId(int Abonent_id) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Abonent_id=?";
-        Sub_service sub_service = new Sub_service();
+        SubService sub_service = new SubService();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -126,10 +126,10 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public Sub_service findByPhoneServiceId(int Phone_service_id) throws SQLException {
+    public SubService findByPhoneServiceId(int Phone_service_id) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "SELECT Abonent_id, Phone_service_id FROM Sub_service WHERE Phone_service_id=?";
-        Sub_service sub_service = new Sub_service();
+        SubService sub_service = new SubService();
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -155,7 +155,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public void update(Sub_service sub_service) throws SQLException {
+    public void update(SubService sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "UPDATE Sub_service SET Abonent_id=?, Phone_service_id=?";
 
@@ -184,7 +184,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public void delete(Sub_service sub_service) throws SQLException {
+    public void delete(SubService sub_service) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "DELETE FROM Sub_service WHERE Abonent_id=? AND Phone_service_id=?";
 
@@ -208,7 +208,7 @@ public class Sub_serviceDaoImpl extends DB implements Sub_serviceDAO {
     }
 
     @Override
-    public Sub_service findById(int id) throws SQLException {
+    public SubService findById(int id) throws SQLException {
         return null;
     }
 }
