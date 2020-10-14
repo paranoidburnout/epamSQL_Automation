@@ -12,10 +12,10 @@ public class AbonentDeleteTest {
     @Test(priority = 3)
     public void delete() throws SQLException, Exception {
         Abonent abonent = new Abonent();
-        abonent.setId(22);
+        abonent.setId(7);
         abonentDAO.delete(abonent);
 
-        Assert.assertEquals(22, abonent.getId());
+        Assert.assertEquals(7, abonent.getId());
         System.out.println("Abonent: ID " + abonent.getId() + ", deleted from database");
     }
 }

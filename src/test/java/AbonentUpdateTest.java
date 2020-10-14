@@ -16,13 +16,13 @@ public class AbonentUpdateTest extends AbonentService {
         abonent.setSecond_name("Blaumman");
         abonent.setFirst_name("Dirk");
         abonent.setPhone_number("+4915903906944");
-        abonent.setId(22);
+        abonent.setId(7);
         abonentDAO.update(abonent);
 
         Assert.assertEquals("Blaumman", abonent.getSecond_name());
         Assert.assertEquals("Dirk", abonent.getFirst_name());
         Assert.assertEquals("+4915903906944", abonent.getPhone_number());
-        Assert.assertEquals(22, abonent.getId());
+        Assert.assertEquals(7, abonent.getId());
 
     }
 }
