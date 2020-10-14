@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface AbonentDAO extends GenericDAO<Abonent> {
     @Override
-    void create(Abonent entity) throws SQLException;
+    void create(Abonent entity) throws Exception;
 
     @Override
-    void update(Abonent entity) throws SQLException;
+    void update(Abonent entity) throws Exception;
 
     @Override
-    void delete(Abonent entity) throws SQLException;
+    void delete(Abonent entity) throws Exception;
 
     @Override
     void deleteById(int id) throws SQLException;

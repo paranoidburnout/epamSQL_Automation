@@ -13,7 +13,7 @@ public class AbonentCrudTest extends AbonentService {
     Abonent abonent = new Abonent();
 
     @Test(priority = 1)
-    public void create() throws SQLException {
+    public void create() throws Exception, SQLException {
         abonent.setSecond_name("Kipchatov");
         abonent.setFirst_name("Michael");
         abonent.setPhone_number("+79633136313");
@@ -23,7 +23,7 @@ public class AbonentCrudTest extends AbonentService {
         Assert.assertEquals("+79633136313", "+79633136313");
     }
     @Test(priority = 2)
-    public void update() throws SQLException {
+    public void update() throws SQLException, Exception {
         abonent.setSecond_name("Blaumman");
         abonent.setFirst_name("Dirk");
         abonent.setPhone_number("+4915903906944");
@@ -36,7 +36,7 @@ public class AbonentCrudTest extends AbonentService {
         Assert.assertEquals(9, 9);
     }
     @Test(priority = 3)
-    public void delete() throws SQLException {
+    public void delete() throws SQLException, Exception {
         abonent.setId(9);
         abonentDAO.delete(abonent);
         Assert.assertEquals(9,9);

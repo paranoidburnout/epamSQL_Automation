@@ -12,22 +12,33 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     Connection connection = getConnection();
 
     @Override
-    public void create(Abonent abonent) throws SQLException {
+    public void create(Abonent abonent) throws Exception {
+        Statement statement = null;
+        int result=0;
+
         try {
-            String first_name = "Kipchatov";
-            String second_name = "Michael";
-            String phone_number = "+79633136313";
+            statement = connection.createStatement();
+            String sql =
+                    "INSERT INTO Abonent (First_name, Second_name, Phone_number)" +
+                            "VALUES ('" + abonent.getFirst_name() + "' , '" + abonent.getSecond_name() + "' , "
+            + "'" + abonent.getPhone_number() + "') ";
+            result = statement.executeUpdate(sql);
 
-            String query =
-                    "INSERT INTO Abonent (Second_name, First_name, Phone_number)" +
-                            "VALUES ('" + first_name + "' , '" + second_name + "' , '" + phone_number + "') ";
-            Statement statement = connection.createStatement(); //простой sql запрос
-            statement.executeUpdate(query);
+            if (result==1){
+                Abonent abonent1 = new Abonent();
+                abonent1.setFirst_name(abonent.getFirst_name());
+                abonent1.setSecond_name(abonent.getSecond_name());
+                abonent1.setPhone_number(abonent.getPhone_number());
+                System.out.println("Rows added");
+            }else throw new Exception("Unable to insert Abonent");
 
-            System.out.println("Rows added");
-            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception(e.getMessage());
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
             if (connection != null) {
                 connection.close();
             }
@@ -97,23 +108,29 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     }
 
     @Override
-    public void update(Abonent abonent) throws SQLException {
+    public void update(Abonent abonent) throws Exception {
+        Statement statement = null;
+        int result = 0;
         try {
-            String first_name = "Blaumman";
-            String second_name = "Dirk";
-            String phone_number = "+4915903906944";
-            int id = 6;
+            statement=connection.createStatement();
 
-            String query =
-                    "UPDATE Abonent SET  First_name=('" + first_name + "'),Second_name=('" + second_name + "'), Phone_number=('" + phone_number + "') WHERE id=('" + id + "')";
+            String sql =
+                    "UPDATE Abonent SET First_name=('" + abonent.getFirst_name() + "'), "
+            +"Second_name=('" + abonent.getSecond_name() + "'), Phone_number=('" + abonent.getPhone_number() + "')"
+            +"WHERE id=('" + abonent.getId() + "')";
 
-            Statement statement = connection.createStatement(); //простой sql запрос
-            statement.executeUpdate(query);
-
+            result = statement.executeUpdate(sql);
             System.out.println("Rows updated");
-            statement.close();
+            if (result!=1){
+                throw new Exception("Unable to update Abonent");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }finally {
+            if (statement != null) {
+                statement.close();
+            }
             if (connection != null) {
                 connection.close();
             }
@@ -125,20 +142,27 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     }
 
     @Override
-    public void delete(Abonent abonent) throws SQLException {
-        PreparedStatement preparedStatement = null;
+    public void delete(Abonent abonent) throws Exception {
+        if (abonent==null){
+            return;
+        }
+        Statement statement = null;
+        int result = 0;
         try {
-            int id = 9;
-            String query = "DELETE FROM Abonent WHERE id=('"+id+"')";
-
-            Statement statement = connection.createStatement(); //простой sql запрос
-            statement.executeUpdate(query);
-
+            statement = connection.createStatement();
+            String sql = "DELETE FROM Abonent WHERE id=('"+abonent.getId()+"')";
+            result = statement.executeUpdate(sql);
             System.out.println("Rows deleted");
-            statement.close();
-
+            if (result !=1){
+                throw new Exception("Unable to delete Abonent");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }finally {
+                if (statement != null) {
+                    statement.close();
+                }
             if (connection != null) {
                 connection.close();
             }

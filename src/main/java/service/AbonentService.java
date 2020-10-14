@@ -22,11 +22,11 @@ public class AbonentService {
         return abonentDAO.findAll();
     }
 
-    public void create(Abonent abonent) throws SQLException {
+    public void create(Abonent abonent) throws Exception, SQLException {
         abonentDAO.create(abonent);
     }
 
-    public void update(Abonent abonent) throws SQLException {
+    public void update(Abonent abonent) throws Exception, SQLException {
         abonentDAO.update(abonent);
     }
 
