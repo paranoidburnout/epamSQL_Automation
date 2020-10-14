@@ -33,4 +33,13 @@ public class AbonentService {
     public void delete(int id) throws SQLException {
         abonentDAO.deleteById(id);
     }
+    public Abonent findForSecondName(String second_name) throws Exception {
+        return abonentDAO.findForSecondName(second_name);
+    }
+    public Abonent findForFirstName(String first_name) throws Exception {
+        return abonentDAO.findForFirstName(first_name);
+    }
+    public Abonent findForPhoneNumber(String phone_number) throws Exception{
+        return abonentDAO.findForPhoneNumber(phone_number);
+    }
 }

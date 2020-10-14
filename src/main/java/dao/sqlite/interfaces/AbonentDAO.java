@@ -23,4 +23,10 @@ public interface AbonentDAO extends GenericDAO<Abonent> {
 
     @Override
     List<Abonent> findAll() throws SQLException;
+
+    Abonent findForSecondName(String second_name) throws SQLException;
+
+    Abonent findForFirstName(String first_name) throws SQLException;
+
+    Abonent findForPhoneNumber(String phone_number) throws SQLException;
 }

@@ -27,7 +27,7 @@ public class ConsolAbonent {
         }
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception, SQLException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String request = reader.readLine();
             ConsolAbonent console = new ConsolAbonent();
@@ -50,12 +50,12 @@ public class ConsolAbonent {
     void close() {
         try {
             c.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    Object getResult(String[] strings) throws IOException, SQLException {
+    Object getResult(String[] strings) throws Exception {
         open();
         if (strings[0].equals("find") && strings[1].equals("user")) {
             try {
@@ -72,6 +72,33 @@ public class ConsolAbonent {
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
+                close();
+            }
+        }
+        if (strings[0].equals("find") && strings[1].equals("by")&& strings[2].equals("second_name")){
+            try {
+                return abonentService.findForSecondName("Grunin");
+            } catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                close();
+            }
+        }
+        if (strings[0].equals("get") && strings[1].equals("by")&& strings[2].equals("first_name")){
+            try {
+                return abonentService.findForFirstName("Dorlisa");
+            } catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                close();
+            }
+        }
+        if (strings[0].equals("choose") && strings[1].equals("by")&& strings[2].equals("phone_number")){
+            try {
+                return abonentService.findForPhoneNumber("+79995323320");
+            } catch (Exception e){
+                e.printStackTrace();
+            }finally {
                 close();
             }
         }

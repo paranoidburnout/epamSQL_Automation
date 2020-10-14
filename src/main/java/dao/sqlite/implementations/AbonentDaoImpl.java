@@ -25,10 +25,9 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             result = statement.executeUpdate(sql);
 
             if (result==1){
-                Abonent abonent1 = new Abonent();
-                abonent1.setFirst_name(abonent.getFirst_name());
-                abonent1.setSecond_name(abonent.getSecond_name());
-                abonent1.setPhone_number(abonent.getPhone_number());
+                abonent.setFirst_name(abonent.getFirst_name());
+                abonent.setSecond_name(abonent.getSecond_name());
+                abonent.setPhone_number(abonent.getPhone_number());
                 System.out.println("Rows added");
             }else throw new Exception("Unable to insert Abonent");
 
@@ -77,6 +76,90 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     }
 
     @Override
+    public Abonent findForSecondName(String second_name) throws SQLException {
+        Statement statement = null;
+        Abonent abonent = new Abonent();
+        try {
+            statement = connection.createStatement();
+
+            String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent WHERE Second_name='" + second_name + "'";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                abonent.setId(resultSet.getInt("id"));
+                abonent.setFirst_name(resultSet.getString("First_name"));
+                abonent.setSecond_name(resultSet.getString("Second_name"));
+                abonent.setPhone_number(resultSet.getString("Phone_number"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return abonent;
+    }
+
+    @Override
+    public Abonent findForFirstName(String first_name) throws SQLException {
+        Statement statement = null;
+        Abonent abonent = new Abonent();
+        try {
+            statement = connection.createStatement();
+
+            String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent WHERE First_name='" + first_name + "'";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                abonent.setId(resultSet.getInt("id"));
+                abonent.setFirst_name(resultSet.getString("First_name"));
+                abonent.setSecond_name(resultSet.getString("Second_name"));
+                abonent.setPhone_number(resultSet.getString("Phone_number"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return abonent;
+    }
+
+    @Override
+    public Abonent findForPhoneNumber(String phone_number) throws SQLException {
+        Statement statement = null;
+        Abonent abonent = new Abonent();
+        try {
+            statement = connection.createStatement();
+
+            String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent WHERE Phone_number='" + phone_number + "'";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                abonent.setId(resultSet.getInt("id"));
+                abonent.setFirst_name(resultSet.getString("First_name"));
+                abonent.setSecond_name(resultSet.getString("Second_name"));
+                abonent.setPhone_number(resultSet.getString("Phone_number"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return abonent;
+    }
+
+    @Override
     public Abonent findById(int id) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "SELECT id, First_name, Second_name, Phone_number FROM Abonent WHERE id=?";
@@ -110,7 +193,6 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
     @Override
     public void update(Abonent abonent) throws Exception {
         Statement statement = null;
-        int result = 0;
         try {
             statement=connection.createStatement();
 
@@ -119,14 +201,11 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             +"Second_name=('" + abonent.getSecond_name() + "'), Phone_number=('" + abonent.getPhone_number() + "')"
             +"WHERE id=('" + abonent.getId() + "')";
 
-            result = statement.executeUpdate(sql);
-            System.out.println("Rows updated");
-            if (result!=1){
-                throw new Exception("Unable to update Abonent");
-            }
+             statement.executeUpdate(sql);
+                System.out.println("Rows updated");
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception(e.getMessage());
+            throw new Exception("Unable to update Abonents");
         }finally {
             if (statement != null) {
                 statement.close();
@@ -147,18 +226,20 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             return;
         }
         Statement statement = null;
-        int result = 0;
+        int result=0;
+
         try {
             statement = connection.createStatement();
             String sql = "DELETE FROM Abonent WHERE id=('"+abonent.getId()+"')";
-            result = statement.executeUpdate(sql);
+            result=statement.executeUpdate(sql);
             System.out.println("Rows deleted");
-            if (result !=1){
-                throw new Exception("Unable to delete Abonent");
+            if( result != 1 ) {
+                throw new Exception( "Unable to delete Abonents" );
             }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new Exception(e.getMessage());
+
         }finally {
                 if (statement != null) {
                     statement.close();
