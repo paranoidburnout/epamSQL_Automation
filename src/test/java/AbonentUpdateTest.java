@@ -5,13 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import service.AbonentService;
 
-import java.sql.SQLException;
-
 public class AbonentUpdateTest extends AbonentService {
     AbonentDAO abonentDAO = new AbonentDaoImpl();
 
     @Test(priority = 2)
-    public void update() throws SQLException, Exception {
+    public void update() throws  Exception {
         Abonent abonent = new Abonent();
         abonent.setSecond_name("Blaumman");
         abonent.setFirst_name("Dirk");
@@ -19,10 +17,14 @@ public class AbonentUpdateTest extends AbonentService {
         abonent.setId(7);
         abonentDAO.update(abonent);
 
-        Assert.assertEquals("Blaumman", abonent.getSecond_name());
-        Assert.assertEquals("Dirk", abonent.getFirst_name());
-        Assert.assertEquals("+4915903906944", abonent.getPhone_number());
-        Assert.assertEquals(7, abonent.getId());
+        Abonent actualAbonent = findForSecondName(abonent.getSecond_name());
 
+        String actualSecond_name = actualAbonent.getSecond_name();
+        String actualFirst_name = actualAbonent.getFirst_name();
+        String actualPhone_number = actualAbonent.getPhone_number();
+
+        Assert.assertEquals(abonent.getSecond_name(), actualSecond_name);
+        Assert.assertEquals(abonent.getFirst_name(), actualFirst_name);
+        Assert.assertEquals(abonent.getPhone_number(), actualPhone_number);
     }
 }

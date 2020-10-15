@@ -3,7 +3,7 @@ import java.sql.*;
 
 
 public class AbonentTest {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args)  {
         AbonentTest abonent = new AbonentTest();
         abonent.open();
         abonent.select();

@@ -226,19 +226,17 @@ public class AbonentDaoImpl extends DB implements AbonentDAO {
             return;
         }
         Statement statement = null;
-        int result=0;
+
 
         try {
             statement = connection.createStatement();
             String sql = "DELETE FROM Abonent WHERE id=('"+abonent.getId()+"')";
-            result=statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
             System.out.println("Rows deleted");
-            if( result != 1 ) {
-                throw new Exception( "Unable to delete Abonents" );
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception(e.getMessage());
+            throw new Exception("Unable to delete Abonents");
 
         }finally {
                 if (statement != null) {

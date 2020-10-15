@@ -12,16 +12,22 @@ public class AbonentCreateTest extends AbonentService {
     AbonentDAO abonentDAO = new AbonentDaoImpl();
 
     @Test(priority = 1)
-    public void create() throws Exception, SQLException {
+    public void create() throws Exception {
         Abonent abonent = new Abonent();
         abonent.setSecond_name("Kipchatov");
         abonent.setFirst_name("Michael");
         abonent.setPhone_number("+79633136313");
         abonentDAO.create(abonent);
 
-        Assert.assertEquals("Kipchatov", abonent.getSecond_name());
-        Assert.assertEquals("Michael", abonent.getFirst_name());
-        Assert.assertEquals("+79633136313", abonent.getPhone_number());
+        Abonent actualAbonent = findForSecondName(abonent.getSecond_name());
+
+        String actualSecond_name = actualAbonent.getSecond_name();
+        String actualFirst_name =  actualAbonent.getFirst_name();
+        String actualPhone_number = actualAbonent.getPhone_number();
+
+        Assert.assertEquals(abonent.getSecond_name(), actualSecond_name);
+        Assert.assertEquals(abonent.getFirst_name(), actualFirst_name);
+        Assert.assertEquals(abonent.getPhone_number(), actualPhone_number);
 
     }
 }

@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class PhoneServiceTest {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         PhoneServiceTest phone_service = new PhoneServiceTest();
         phone_service.open();
         phone_service.select();

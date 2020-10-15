@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class SubServiceTest {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         SubServiceTest sub_service = new SubServiceTest();
         sub_service.open();
         sub_service.select();
